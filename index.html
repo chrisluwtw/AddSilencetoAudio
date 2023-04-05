@@ -3,28 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta
-    http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
-  />
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    />
     <title>Add Silence to Audio</title>
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    /> -->
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;
+      }
+      h1 {
+        text-align: center;
+        font-weight: 500;
+      }
+      #console-output {
+        font-size: 12px;
       }
     </style>
   </head>
   <body>
-    <h1>Add Silence to Audio</h1>
-    <label for="inputPath">Input File:</label>
-    <input type="text" id="inputPath" />
-    <br />
-    <label for="outputPath">Output File:</label>
-    <input type="text" id="outputPath" />
-    <br />
-    <label for="silenceDuration">Silence Duration (seconds):</label>
-    <input type="number" id="silenceDuration" />
-    <br />
-    <button id="processButton">Add Silence</button>
+    <div class="container">
+      <h1>Add Silence to Audio</h1>
+      <label for="inputPath">Input File:</label>
+      <input type="text" id="inputPath" style="width: 100%" />
+      <label for="outputPath">Output File:</label>
+      <input type="text" id="outputPath" style="width: 100%" />
+      <label for="silenceDuration">Silence Duration (seconds):</label>
+      <input type="number" id="silenceDuration" style="width: 100%" />
+      <button
+        id="processButton"
+        style="
+          background-color: #3f51b5;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          font-size: 16px;
+          width: 100%;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        "
+      >
+        Add Silence
+      </button>
+      <div id="console-output"></div>
+    </div>
+    <!-- <div id="progress"></div> -->
+
     <script src="render.js"></script>
   </body>
 </html>

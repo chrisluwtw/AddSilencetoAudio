@@ -40,6 +40,9 @@
     }
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.16",
     "ffmpeg-static": "^5.1.0",
     "fluent-ffmpeg": "^2.1.2"
   }
