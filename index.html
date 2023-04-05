@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+  />
+    <title>Add Silence to Audio</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add Silence to Audio</h1>
+    <label for="inputPath">Input File:</label>
+    <input type="text" id="inputPath" />
+    <br />
+    <label for="outputPath">Output File:</label>
+    <input type="text" id="outputPath" />
+    <br />
+    <label for="silenceDuration">Silence Duration (seconds):</label>
+    <input type="number" id="silenceDuration" />
+    <br />
+    <button id="processButton">Add Silence</button>
+    <script src="render.js"></script>
+  </body>
+</html>

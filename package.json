@@ -1,0 +1,46 @@
+{
+  "name": "add-silence-to-audio",
+  "version": "1.0.0",
+  "description": "A desktop app to add silence to the beginning of an audio file",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "chris_s",
+  "licensde": "ISC",
+  "depenencies": {
+    "ffmpeg-static": "^4.4.0",
+    "fluent-ffmpeg": "^2.1.2"
+  },
+  "devDependencies": {
+    "electron": "^16.0.4",
+    "electron-builder": "^22.14.5",
+    "javascript-obfuscator": "^4.0.2"
+  },
+  "build": {
+    "appId": "com.example.addsilencetoaudio",
+    "productName": "AddSilenceToAudio",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "renderer.js"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.2"
+  }
+}
