@@ -18,11 +18,7 @@ function createWindow() {
   win.loadFile("index.html");
   mainWindow.setMenu(null); // 完全移除菜单栏
 
-  // Log messages from renderer process
-  ipcMain.on("log", (event, message) => {
-    console.log(message);
-    mainWindow.webContents.send("log", message);
-  });
+
 }
 
 app.whenReady().then(createWindow);
@@ -43,10 +39,11 @@ app.on("activate", () => {
 ipcMain.on("console-log", (event, message) => {
   //console.log("From renderer:", message);
     // Convert the UTF-8 encoded message back to the original string
-    const originalMessage = Buffer.from(message, 'utf8').toString();
-
+    //const originalMessage = Buffer.from(message, 'utf8').toString();
+    console.log('周杰伦'); // 该字符是UTF-8编码的BOM(Byte Order Mark)用于指示文件的编码方式
+  
     // Process the message
-    console.log('Received message:', originalMessage);
+    console.log('Received message:', message);
 
 });
 
