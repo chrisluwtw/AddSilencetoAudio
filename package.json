@@ -9,8 +9,11 @@
   },
   "author": "chris_s",
   "licensde": "ISC",
-  "depenencies": {
-    "ffmpeg-static": "^4.4.0",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.16",
+    "ffmpeg-static": "^5.1.0",
     "fluent-ffmpeg": "^2.1.2"
   },
   "devDependencies": {
@@ -27,7 +30,18 @@
     "files": [
       "main.js",
       "index.html",
-      "renderer.js"
+      "render.js",
+      "node_modules/ffmpeg-static/**",
+      "node_modules/fluent-ffmpeg/**"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/ffmpeg-static",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      }
     ],
     "win": {
       "target": "nsis"
@@ -38,12 +52,5 @@
     "linux": {
       "target": "AppImage"
     }
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/material": "^5.11.16",
-    "ffmpeg-static": "^5.1.0",
-    "fluent-ffmpeg": "^2.1.2"
   }
 }
