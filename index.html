@@ -6,7 +6,7 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
     />
-    <title>Add Silence to Audio</title>
+    <title>Media Node Master</title>
 
     <!-- <link
       rel="stylesheet"
@@ -39,7 +39,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Add Silence to Audio</h1>
+      <h1>Media Node Master</h1>
       <label for="inputPath">Input File:</label>
       <input type="text" id="inputPath" style="width: 100%" />
       <label for="outputPath">Output File:</label>
@@ -61,6 +61,22 @@
       >
         Add Silence
       </button>
+      <button
+        id="extractButton"
+        style="
+          background-color: #3f51b5;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          font-size: 16px;
+          width: 100%;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        "
+      >
+        Extract Audio Track from video file
+      </button>
+      
       <div id="console-output"></div>
     </div>
     <!-- <div id="progress"></div> -->

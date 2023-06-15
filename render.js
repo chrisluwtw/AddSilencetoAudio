@@ -2,6 +2,8 @@
 const fs = require("fs");
 // const ffmpegPath = require("ffmpeg-static");
 const ffmpeg = require("fluent-ffmpeg");
+const path = require('path');
+
 
 
 
@@ -79,6 +81,47 @@ const addSilence = (input, output, silenceDuration) => {
   });
 };
 
+const extractAudio =(inputPath, outputPath) => {
+
+  //alert(inputPath)
+  //alert(outputPath)
+
+
+  // var command = ffmpeg(inputPath);
+  // command.outputOptions([
+  //   '-vn',
+  //   '-acodec copy',
+  // ]).save(outputPath);
+
+  return new Promise((resolve, reject) => {
+    ffmpeg(inputPath)
+       .outputOptions(['-map 0:a:0','-b:a 256k'])
+    //   .outputOptions([
+    //     '-vn',
+    //     '-acodec', 'copy'
+    // ])
+      .output(outputPath)
+      .on("progress", (progress) => {
+        if (progress && progress.percent) {
+          console.log(`处理进度: ${progress.percent.toFixed(2)}%`);
+          logToConsole(`处理进度: ${progress.percent.toFixed(2)}%`);
+
+        }
+      })
+      .on('end', function() {
+        console.log('Audio extraction completed');
+        logToConsole("提取音轨完成 ");
+        resolve();
+      })
+      .on('error', function(err) {
+        console.log('An error occurred: ' + err.message);
+        logToConsole("提取音轨处理错误 "+err);
+        reject(err);
+      })
+      .run();
+  });
+}
+
 document.getElementById('processButton').addEventListener("click", () => {
   const inputPath = document.getElementById("inputPath").value;
   const outputPath = document.getElementById("outputPath").value;
@@ -94,4 +137,22 @@ document.getElementById('processButton').addEventListener("click", () => {
     .catch((err) => {
       alert("添加静音失败: " + err.message);
     });
+});
+
+
+document.getElementById('extractButton').addEventListener('click', () => {
+
+  const inputPath = document.getElementById("inputPath").value;
+  const outputPath = document.getElementById("outputPath").value;
+  console.log("Input Path:", inputPath);
+  console.log("Output Path:", outputPath);
+  alert(1)
+
+  extractAudio(inputPath,outputPath)
+  .then(() => {
+    alert("提取成功");
+  })
+  .catch((err) => {
+    alert("提取失败: " + err.message);
+  })
 });
